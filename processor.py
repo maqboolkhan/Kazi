@@ -2,7 +2,7 @@ import nltk
 from nltk.tree import Tree
 
 
-class processor:
+class Processor:
     text = ''
     text_tokens = []
     name_entities = []
@@ -20,19 +20,32 @@ class processor:
     def __get_name_entities(self):
         tagged_sentence = nltk.pos_tag(self.text_tokens)
         pos_chunks = nltk.ne_chunk(tagged_sentence)
+        print(pos_chunks)
         entities = []
         continuous_chunk = []
         other_entities = []
+        word = ""
 
         for i in pos_chunks:
             if type(i) == Tree:
-                word = " ".join([token for token, pos in i.leaves()])
+                # Because if two or more NNP appears before NE they can be a part of entity
+                if other_entities:
+                    word = " ".join(other_entities)
+                    other_entities = []
+
+                word += " " + " ".join([token for token, pos in i.leaves()])
                 continuous_chunk.append(word)
+                word = ""
             else:
-                entity = " ".join(continuous_chunk)
-                if entity.strip():
-                    entities.append(entity)
-                continuous_chunk = []
+                if continuous_chunk:
+                    if i[1] == 'NNP':
+                        continuous_chunk.append(i[0])
+                        continue
+
+                    entity = " ".join(continuous_chunk).strip()
+                    if entity:
+                        entities.append(entity)
+                    continuous_chunk = []
 
                 # Because if two or more NNP appears together they can be a entity
                 if i[1] == 'NNP':
