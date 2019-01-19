@@ -20,36 +20,32 @@ class processor:
     def __get_name_entities(self):
         tagged_sentence = nltk.pos_tag(self.text_tokens)
         pos_chunks = nltk.ne_chunk(tagged_sentence)
+        entities = []
         continuous_chunk = []
-        current_chunk = []
-        temp = []
+        other_entities = []
 
         for i in pos_chunks:
             if type(i) == Tree:
-                current_chunk.append(" ".join([token for token, pos in i.leaves()]))
-            elif current_chunk:
-                named_entity = " ".join(current_chunk)
-                if named_entity not in continuous_chunk:
-                    continuous_chunk.append(named_entity)
-                    current_chunk = []
+                word = " ".join([token for token, pos in i.leaves()])
+                continuous_chunk.append(word)
             else:
+                entity = " ".join(continuous_chunk)
+                if entity.strip():
+                    entities.append(entity)
+                continuous_chunk = []
+
+                # Because if two or more NNP appears together they can be a entity
                 if i[1] == 'NNP':
-                    temp.append(i[0])
+                    other_entities.append(i[0])
                 else:
                     # Collecting other important words
                     if ['J', 'N', 'R'].count(i[1][0]):
                         self.other_words.append(i[0])
-                    if len(temp) == 1:
-                        temp = []
-                continue
+                    if len(other_entities) == 1:
+                        other_entities = []
 
-        one_more = " ".join(temp)
-        if continuous_chunk or current_chunk:
-            named_entity = " ".join(current_chunk)
-            if named_entity not in continuous_chunk:
-                continuous_chunk.append(named_entity)
+        other_entity = " ".join(other_entities)
 
-        if len(temp) > 1:
-            continuous_chunk.append(one_more)
-
-        self.name_entities = continuous_chunk
+        if other_entity:
+            entities.append(other_entity)
+        self.name_entities = entities
