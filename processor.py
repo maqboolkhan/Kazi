@@ -20,7 +20,6 @@ class Processor:
     def __get_name_entities(self):
         tagged_sentence = nltk.pos_tag(self.text_tokens)
         pos_chunks = nltk.ne_chunk(tagged_sentence)
-        print(pos_chunks)
         entities = []
         continuous_chunk = []
         other_entities = []

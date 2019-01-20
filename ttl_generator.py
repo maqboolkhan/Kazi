@@ -5,8 +5,10 @@ class TtlGenerator:
         self.filename = filename
         self.f = open(filename + '.ttl', "w")
 
-    def addFact(self, factID, truthValue, confidence):
-        self.f.write('<http://swc2017.aksw.org/task2/dataset/'+str(factID)+'> ' + '<http://swc2017.aksw.org/has'+truthValue+'> ' + '"'+str(confidence)+'"' + '^^<http://www.w3.org/2001/XMLSchema#double> .\n')
+    def addfact(self, factid, confidence):
+        self.f.write('<http://swc2017.aksw.org/task2/dataset/' + factid + '> '
+                     + '<http://swc2017.aksw.org/hasTruthValue> '
+                     + '"' + confidence + '"' + '^^<http://www.w3.org/2001/XMLSchema#double> .\n')
 
-    def closeFile(self):
+    def closefile(self):
         self.f.close()
