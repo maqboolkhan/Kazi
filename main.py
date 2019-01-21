@@ -1,14 +1,21 @@
+from wikipedia import wikipedia
 from processor import Processor
 import wikiparser as wp
 from ttl_generator import TtlGenerator
 
 
 def check(entities):
+    """
+        Really naive approach which first search WikiPage for the Subject
+        and then try to search Object in that page and if found return
+        positive confidence otherwise negative
+    """
     weight = -1
     try:
         search_result = wp.search(entities[0])
         content = search_result.content
-    except:
+    except wikipedia.exceptions.DisambiguationError:
+        # Exception can be raise if search term (Subject) returns
         return -1
 
     for entity in entities[1:]:

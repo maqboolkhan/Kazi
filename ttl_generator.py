@@ -1,5 +1,8 @@
 class TtlGenerator:
-    # Class for generating ttl file
+    """
+        Class for writing Turtle file with fact's factid &
+        confidence with the given format
+    """
 
     def __init__(self, filename):
         self.filename = filename

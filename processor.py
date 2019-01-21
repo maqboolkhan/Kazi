@@ -3,6 +3,11 @@ from nltk.tree import Tree
 
 
 class Processor:
+    """
+        This class does Name Entity recognition on given text.
+        It uses NLTK but also extends NE process to make it more
+        reliable
+    """
     text = ''
     text_tokens = []
     name_entities = []
@@ -20,9 +25,9 @@ class Processor:
     def __get_name_entities(self):
         tagged_sentence = nltk.pos_tag(self.text_tokens)
         pos_chunks = nltk.ne_chunk(tagged_sentence)
-        entities = []
+        entities = []  # Name Entities storage
         continuous_chunk = []
-        other_entities = []
+        other_entities = []  # Words other than Name Entities possibly Predicates
         word = ""
 
         for i in pos_chunks:
