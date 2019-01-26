@@ -66,7 +66,7 @@ The **birth place** of **Quaid-e-Azam** is **Pakistan** (true fact)
 
 The Predicate `born` and `birth place` are quite different. It's difficult to know what predicate is available on Wikipedia, there is a possibility of having a synoynym of the same word. 
 
-Secondly, the sentences on Wikipedia are not that simple as compared to our data and the distance between the Subject, Oject and the Predicate can make a sentence evaluation quite unreliable and surprisingly our project gives 65% of precision.
+Secondly, the sentences on Wikipedia are not that simple as compared to our data and the distance between the Subject, Object and the Predicate can make a sentence evaluation quite unreliable and without using *predicate*, surprisingly our project gives 65% of precision.
 
 Following are the sample run of the trained data set.
 
