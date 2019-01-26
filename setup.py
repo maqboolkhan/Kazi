@@ -1,6 +1,6 @@
 import os
 
-os.popen("pip3 install -r requirements.txt")
+os.system("pip3 install -r requirements.txt")
 
 import nltk
 
