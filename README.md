@@ -61,11 +61,11 @@ Example:
 
 this sentence can also be written as:
 
-The **Birth place** of **Quaid-e-Azam** is **Pakistan** (true fact)
+The **birth place** of **Quaid-e-Azam** is **Pakistan** (true fact)
 
-These both sentences will return `True` in our project regardless of the Predicate.
+The Predicate `born` and `birth place` are quite different. It's difficult to know what predicate is available on Wikipedia, there is a possibility of having a Synoynym of the same word. 
 
-Secondly, out project gives 65% of precision which is greater than the required percentage for the mini project.
+Secondly, the sentences on Wikipedia are not that simple as compared ot our data and the distance between the Subject, Oject and the Predicate can make a sentance evaluation quite unreliable and surprisingly our project gives 65% of precision.
 
 Following are the sample run of the trained data set.
 
