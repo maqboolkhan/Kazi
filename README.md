@@ -22,8 +22,8 @@ Muhammad Hamza | 6845542
 python3 setup.py
 ```
 
-##### Note: 
-Our setup uses Python3 which is aliased as `python3`.
+##### Attention: 
+Our setup uses Python3 which is aliased as `python3`. If python3 command is not available as `python3` then `setup.py` won't work. 
 
 ## Train:
 In order to execute the training data set, please run the following command.
@@ -32,18 +32,23 @@ Python3 main.py train
 ```
 
 ## Test:
-Run the following command to test the training data set
+In order to execute `test`, please run the following command.
 ```
 python3 main.py test
 ```
 ##### Note: 
-Please make sure that the spelling of *training* and *test* are identical.
+Please make sure that the spellings of *train* and *test* are correct.
 
 ## How it works
 Following are the sample run of the trained data set.
 
 ##### Data that produces FALSE - POSITVE result
-1. **Quaid-e-Azam** was **born** in **Bahrain**
+1. **Quaid-e-Azam** was **born** in **India**
 1. **Ansoo Lake** is **situated** in **Sindh province**
 1. **Quetta** is the **capital** city of **Pakistan**
+
+##### Data that produces TRUE - NEGATIVE result
+1. ****
+1. 
+1. 
 
