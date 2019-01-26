@@ -49,17 +49,23 @@ Valve Corporation's foundation place is Kirkland, Washington.
 ``` 
 after performing `NE`, we will get `Valve Corporation's` and `Kirkland, Washington`. As these sentences are quite straight forward,  so we will assume the first as Subject and the sencond as Object. Now, the remaining tokens are `place, is` and here you can easily see that after removing the stop word `is`, we are left with `place`, and so we can assume it to be the Predicate.
 
-Now we take the Subject and search its corresponding Wikipedia page. Once we hav the page, we seach our OBject in that respective page. If the search result returns `true`, we consider our fact as **TRUE** and if the search result returns `false`, we consider our fact as `false`.
+Now we take the Subject and search its corresponding Wikipedia page. Once we have the page, we seach our Object in that respective page. If the search result returns `true`, we consider our fact as **TRUE** and if the search result returns `false`, we consider our fact as **FALSE**.
 
 Since the approach is Naive, one can simply question; why don't we use predicate to check our facts?
-1. Each fact or sentence can be written in multiple ways.
+
+Each fact or sentence can be written in multiple ways.
+
 Example:
+
 **Quaid-e-Azam** was **born** in **Pakistan**  (true fact)
+
 this sentence can also be written as:
+
 The **Birth place** of **Quaid-e-Azam** is **Pakistan** (true fact)
 
 These both sentences will return `True` in our project regardless of the Predicate.
-1. Secondly, out project gives 65% of precision which is greater than the required percentage for the mini project.
+
+Secondly, out project gives 65% of precision which is greater than the required percentage for the mini project.
 
 Following are the sample run of the trained data set.
 
