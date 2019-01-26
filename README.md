@@ -41,13 +41,14 @@ Please make sure that the spellings of *train* and *test* are correct.
 
 ## How it works:
 
-First of all, we perform `Name Entity (NE)` on each sentence using `NLTK`, but `NE` done by `NLTK` is not perfect. Therefore, we wrote our own rules for `(NE)` in our project.
+First of all, we perform `Name Entity (NE)` on each sentence using `NLTK`, but `NE` done by `NLTK` is not perfect. Therefore, we wrote our own rules for `NE` in our project.
+
 Consider the following sample sentence taken from the `train.tsv` file:
 
 ```
 Valve Corporation's foundation place is Kirkland, Washington.
 ``` 
-after performing `NE`, we will get `Valve Corporation's` and `Kirkland, Washington`. As these sentences are quite straight forward,  so we will assume the first as Subject and the sencond as Object. Now, the remaining tokens are `place, is` and here you can easily see that after removing the stop word `is`, we are left with `place`, and so we can assume it to be the Predicate.
+After performing `NE`, we will get `Valve Corporation's` and `Kirkland, Washington`. As these sentences are quite straight forward,  so we will assume the first as Subject and the second as Object. Now, the remaining tokens are `place, is` and here you can easily see that after removing the stop word `is`, we are left with `place`, and so we can assume it to be the Predicate.
 
 Now we take the Subject and search its corresponding Wikipedia page. Once we have the page, we seach our Object in that respective page. If the search result returns `true`, we consider our fact as **TRUE** and if the search result returns `false`, we consider our fact as **FALSE**.
 
@@ -63,9 +64,9 @@ this sentence can also be written as:
 
 The **birth place** of **Quaid-e-Azam** is **Pakistan** (true fact)
 
-The Predicate `born` and `birth place` are quite different. It's difficult to know what predicate is available on Wikipedia, there is a possibility of having a Synoynym of the same word. 
+The Predicate `born` and `birth place` are quite different. It's difficult to know what predicate is available on Wikipedia, there is a possibility of having a synoynym of the same word. 
 
-Secondly, the sentences on Wikipedia are not that simple as compared ot our data and the distance between the Subject, Oject and the Predicate can make a sentance evaluation quite unreliable and surprisingly our project gives 65% of precision.
+Secondly, the sentences on Wikipedia are not that simple as compared to our data and the distance between the Subject, Oject and the Predicate can make a sentence evaluation quite unreliable and surprisingly our project gives 65% of precision.
 
 Following are the sample run of the trained data set.
 
